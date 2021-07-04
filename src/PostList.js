@@ -1,30 +1,38 @@
 import React from 'react';
+import {Button, Col, Row} from "reactstrap";
 
 export default class PostList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-        }
+        this.state = {}
     }
 
     render() {
         const posts = this.props.posts;
 
         return <div className="container"
-            style={{ width: "400px", border: "1px solid #FF0000 !important", padding: "10px" }}
-            ref={(el) => {
-                if (el) {
-                    el.style.setProperty('border-color', "#FF0000", 'important');
-                }
-            }}
+
         >
-            Postlist :<br />
+
             {posts.map((post, key) => {
                 return (
-                    <div key={key}>{post}     <span style={{ cursor: "pointer" }}
-                        onClick={() => this.props.deletePost(post)}
-                    >Remove</span><br /></div>
-                )
+
+                    <Row key={key}>
+                        <Col>
+                            <br/>
+                            {post.day}<span style={{cursor: "pointer"}}/>
+                        </Col>
+
+                        <Col>
+                            <br/>
+                            {post.status}<span style={{cursor: "pointer"}}/></Col>
+                        <Col>
+                            <br/>
+                            {post.post}<span style={{cursor: "pointer"}}/></Col>
+                        <Col>
+                            <br/>
+                            <Button onClick={() => this.props.deletePost(post)}>Add Post</Button></Col>
+                    </Row>)
             })}
         </div>
     }
