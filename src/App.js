@@ -1,32 +1,63 @@
 import './App.css';
 
-import React, {useState} from 'react';
-
-
-import PostForm from './PostForm';
-import PostList from './PostList';
-import {Container} from "reactstrap";
+import {BrowserRouter, Link, Route, Switch} from 'react-router-dom';
+import {Col, Container, Row} from 'reactstrap';
+import Home from './Home';
 
 
 function App() {
-    const [posts, setPosts] = useState([]);
-
-    const addPost = (post) => {
-        setPosts([...posts, post])
-    }
-
-    const deletePost = (deletedPost) => {
-        setPosts([...posts.filter(post => post != deletedPost)]);
-    }
-
     return (
-        <React.Fragment>
+        <BrowserRouter>
             <Container>
-                <PostForm addPost={addPost}></PostForm>
-                <PostList posts={posts} deletePost={deletePost}></PostList>
+                {/*<Row>*/}
+                {/*    <Col>*/}
+                {/*        <Link to="/">Home</Link>*/}
+                {/*        /!* <a href="/" >Home</a> *!/*/}
+                {/*    </Col>*/}
+                {/*    <Col>*/}
+                {/*        <Link to="/Profile">Profile</Link>*/}
+                {/*    </Col>*/}
+                {/*    <Col>*/}
+                {/*        <Link to="/Comments">Comments</Link>*/}
+                {/*    </Col>*/}
+                {/*</Row>*/}
+                <Row>
+                    <Col>
+                        <Switch>
+                            <Route exact path="/">
+                                <Home/>
+                            </Route>
+                            {/*<Route path="/about/:id">*/}
+                            {/*    <About/>*/}
+                            {/*</Route>*/}
+                            {/* <Route path="/about(/:id)(/:number)">
+                <About />
+              </Route> */}
+                            {/*<Route path="/about">*/}
+                            {/*    <About/>*/}
+                            {/*</Route>*/}
+                            {/*<Route path="/contact/:param">*/}
+                            {/*    <ContactUs/>*/}
+                            {/*</Route>*/}
+                            {/*<Route path="/contact">*/}
+                            {/*    <ContactUs/>*/}
+                            {/*</Route>*/}
+                            {/*<Route exact path="/items">*/}
+                            {/*    <ItemList/>*/}
+                            {/*</Route>*/}
+                            {/*<Route exact path="/items/:id">*/}
+                            {/*    <ItemDetail/>*/}
+                            {/*</Route>*/}
+                            {/*<Route path="/items/create">*/}
+                            {/*    <ItemCreate/>*/}
+                            {/*</Route>*/}
+                        </Switch>
+                    </Col>
+                </Row>
+                <Row>
+                </Row>
             </Container>
-
-        </React.Fragment>
+        </BrowserRouter>
     );
 }
 

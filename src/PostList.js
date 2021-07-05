@@ -31,7 +31,7 @@ export default class PostList extends React.Component {
                             {post.post}<span style={{cursor: "pointer"}}/></Col>
                         <Col>
                             <br/>
-                            <Button onClick={() => this.props.deletePost(post)}>Add Post</Button></Col>
+                            <Button onClick={() => this.props.deletePost(post)}>Delete Post</Button></Col>
                     </Row>)
             })}
         </div>
